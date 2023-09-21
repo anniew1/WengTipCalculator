@@ -1,27 +1,37 @@
 import java.util.Scanner;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args){
 
         Scanner scan = new Scanner(System.in);
 
-
         double total = 0;
+        String nameItem;
+        List<String> itemName = new ArrayList<>();
 
         System.out.println("Welcome to the tip calculator!");
 
-        System.out.print("How many people are in your group:");
+        System.out.print("How many people are in your group: ");
         int people = scan.nextInt();
+        scan.nextLine();
 
-        System.out.print("What percentage do you want to tip (as an integer):");
+        System.out.print("What percentage do you want to tip (as an integer): ");
         int percent = scan.nextInt();
-
+        scan.nextLine();
         double end = 0;
         while (end != -1){
-            System.out.print("Enter a cost in dollars and cents, e.g. 12.50 (-1 to end):");
+
+            System.out.print("Enter a cost in dollars and cents, e.g. 12.50 (-1 to end): ");
             end = scan.nextDouble();
+            scan.nextLine();
             total += end;
+
+            if (end!= -1){
+                System.out.print("Enter the item: ");
+                nameItem = scan.nextLine();
+                itemName.add(nameItem);}
         }
 
         total++;
@@ -50,5 +60,11 @@ public class Main {
         System.out.println("Tip per person: $" + tipPerPerson);
         System.out.println("Total cost per person: $" + perPersonTotal);
         System.out.println("--------------------------------");
+
+        System.out.println("Items ordered:");
+
+        for (int i = 0; i < itemName.size(); i++){
+            System.out.println(itemName.get(i));
+        }
     }
 }
