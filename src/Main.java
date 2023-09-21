@@ -1,11 +1,11 @@
 import java.util.Scanner;
-import java.text.DecimalFormat;
+
 
 public class Main {
     public static void main(String[] args){
 
         Scanner scan = new Scanner(System.in);
-        DecimalFormat df_obj = new DecimalFormat("#.###");
+
 
         double total = 0;
 
@@ -24,13 +24,22 @@ public class Main {
             total += end;
         }
 
-        double totalTip = (total+1) * (percent/100.0);
-        System.out.format("%.2f", totalTip);
+        total++;
+        double totalTip = total * (percent/100.0);
+        totalTip = Math.round( totalTip * Math.pow(10,2)) / Math.pow(10,2);
 
         double tipPerPerson = totalTip/people;
-        double totalWithTip = total += totalTip;
+        tipPerPerson = Math.round( tipPerPerson * Math.pow(10,2)) / Math.pow(10,2);
+
+        double totalWithTip = total;
+        totalWithTip += totalTip;
+        totalWithTip = Math.round( totalWithTip * Math.pow(10,2)) / Math.pow(10,2);
+
         double perPersonTotal = totalWithTip/people;
+        perPersonTotal = Math.round( perPersonTotal * Math.pow(10,2)) / Math.pow(10,2);
+
         double perPersonBeforeTip = total/people;
+        perPersonBeforeTip = Math.round( perPersonBeforeTip * Math.pow(10,2)) / Math.pow(10,2);
 
         System.out.println("--------------------------------");
         System.out.println("Total bill before tip: $" + total);
@@ -40,5 +49,6 @@ public class Main {
         System.out.println("Per person cost before tip: $" + perPersonBeforeTip);
         System.out.println("Tip per person: $" + tipPerPerson);
         System.out.println("Total cost per person: $" + perPersonTotal);
+        System.out.println("--------------------------------");
     }
 }
